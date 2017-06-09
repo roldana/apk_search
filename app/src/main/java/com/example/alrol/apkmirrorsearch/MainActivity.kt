@@ -1,17 +1,17 @@
 package com.example.alrol.apkmirrorsearch
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.widget.SearchView
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -29,12 +29,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-
-        val fab = findViewById(R.id.fab) as FloatingActionButton
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
 
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         val toggle = ActionBarDrawerToggle(
@@ -64,20 +58,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             if (radioDev.isChecked) {
                 searchUrl = "http://www.apkmirror.com/?post_type=app_release&searchtype=dev&s="
             }
-            val searchString = searchField.query
+            val searchString = searchField.query.toString()
 
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(searchUrl + searchString))
-            startActivity(browserIntent)
+            Log.d("LOG", searchString)
+
+            if (searchString != "") {
+                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(searchUrl + searchString))
+                 startActivity(browserIntent)
+            } else {
+                searchField.setBackgroundColor(Color.RED)
+            }
+
+
+
 
         }
-
-        searchField.setliste
-
-
-
-
-
-
 
     }
 
@@ -109,23 +104,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
+            R.id.nav_search -> {
+                // Handle the search button on navbar action
             }
         }
 
@@ -135,29 +115,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
-//    fun onRadioButtonClicked(view: View) {
-//        // Is the button now checked?
-//        val checked = (view as RadioButton).isChecked
-//
-//        // Check which radio button was clicked
-//        when (view.getId()) {
-//            R.id.apk_radio_button -> {
-//                if (checked){
-//                    searchUrl = "http://www.apkmirror.com/?post_type=app_release&searchtype=apk&s="
-//                }
-//            }
-//            R.id.dev_radio_button -> {
-//                if (checked) {
-//                    searchUrl = "https://www.apkmirror.com/?post_type=app_release&searchtype=dev&s="
-//                }
-//            }
-//
-//            R.id.app_radio_button -> {
-//                if (checked) {
-//                    searchUrl = "https://www.apkmirror.com/?post_type=app_release&searchtype=app&s="
-//                }
-//            }
-//
-//        }
-//    }
 }
