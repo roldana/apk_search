@@ -10,6 +10,7 @@ import android.widget.*
 var searchString = ""
 var searchFor = ""
 var searchInput = ""
+var searchResultArray = ArrayList<AppInfo>()
 
 class MainActivity : Activity() {
     lateinit var searchUrl : String
@@ -29,6 +30,8 @@ class MainActivity : Activity() {
         radioApk = findViewById(R.id.apk_radio_button) as RadioButton
         radioApp = findViewById(R.id.app_radio_button) as RadioButton
         radioDev = findViewById(R.id.dev_radio_button) as RadioButton
+
+        searchResultArray.clear()
 
 
     }
@@ -53,14 +56,27 @@ class MainActivity : Activity() {
         searchString = searchUrl+searchInput
 
         if (searchInput != "") {
-            val webViewActivityIntent = Intent(this, WebViewActivity::class.java)
-            startActivity(webViewActivityIntent)
+//            val webViewActivityIntent = Intent(this, WebViewActivity::class.java)
+//            startActivity(webViewActivityIntent)
+
+//            val scraperFragmentIntent = Intent(this, ScraperFragment::class.java)
+//            startActivity(scraperFragmentIntent)
+            ScraperTask().execute(searchString)
+            val scraperFragmentIntent = Intent(this, ScraperFragment::class.java)
+            startActivity(scraperFragmentIntent)
+            searchField.setBackgroundColor(Color.CYAN)
+
         } else {
             searchField.setBackgroundColor(Color.RED)
         }
 
 
     }
+
+//    fun scraperDone() {
+//        val scraperFragmentIntent = Intent(this, ScraperFragment::class.java)
+//        startActivity(scraperFragmentIntent)
+//    }
 
 
 
