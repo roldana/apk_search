@@ -32,9 +32,7 @@
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/appImg"
-        app:layout_constraintRight_toLeftOf="@+id/appDownloadNumber"
         app:layout_constraintTop_toTopOf="@+id/appImg"
         app:layout_constraintVertical_bias="0.033" />
 

@@ -2,6 +2,7 @@ package com.example.alrol.apkmirrorsearch
 
 import android.app.Activity
 import android.content.Context
+import android.opengl.Visibility
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +14,8 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import android.os.AsyncTask.execute
 import android.support.v7.widget.DividerItemDecoration
+import android.view.View
+import android.widget.ProgressBar
 
 
 class ScraperFragment : Activity(), AsyncResponse {
@@ -20,18 +23,23 @@ class ScraperFragment : Activity(), AsyncResponse {
     lateinit var searchResultsRV: RecyclerView
     lateinit var searchResultsRVAdapter: SearchResultsAdapter
     lateinit var searchResultsRVLayoutManager: RecyclerView.LayoutManager
-    var scraper = ScraperTask()
+    lateinit var progressBar: ProgressBar
+    var scraper = SearchScraperTask()
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scraper_fragment)
-        searchResultsRV = findViewById(R.id.searchResultsRecyclerView) as RecyclerView
         title = "$searchFor: $searchInput"
+
+
+        searchResultsRV = findViewById(R.id.searchResultsRecyclerView) as RecyclerView
+        progressBar = findViewById(R.id.scraperProgress) as ProgressBar
 
         scraper.delegate = this
         scraper.execute(searchString)
+
 
     }
 
@@ -46,6 +54,12 @@ class ScraperFragment : Activity(), AsyncResponse {
         searchResultsRV.adapter = searchResultsRVAdapter
 
         searchResultsRV.addItemDecoration(DividerItemDecoration(this,LinearLayoutManager.VERTICAL))
+
+        progressBar.visibility = View.GONE
+    }
+
+    fun setProgressPercent(vararg progress: Int?){
+        progressBar.progress = progress[0] as Int
     }
 
 }

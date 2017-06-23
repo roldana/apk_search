@@ -1,8 +1,5 @@
 package com.example.alrol.apkmirrorsearch
 
-import android.content.Context
-import android.provider.Telephony
-import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +12,6 @@ import android.widget.TextView
  * Created by alrol on 2017-06-21.
  */
 class SearchResultsAdapter(val searchResults: ArrayList<AppInfo>): RecyclerView.Adapter<SearchResultsAdapter.SearchResultsViewHolder>() {
-
-//    lateinit var searchResults: ArrayList<AppInfo>
-////
-//    fun SearchResultsAdapter(searchResults: ArrayList<AppInfo>) {
-//        this.searchResults = searchresult
-//    }
 
     class SearchResultsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

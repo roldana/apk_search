@@ -7,7 +7,7 @@ import org.jsoup.Jsoup
 /**
  * Created by alrol on 2017-06-23.
  */
-class ScraperTask:  AsyncTask<String, Int, ArrayList<AppInfo>>() {
+class SearchScraperTask:  AsyncTask<String, Int, ArrayList<AppInfo>>() {
 
     lateinit var delegate: ScraperFragment
 
@@ -25,10 +25,10 @@ class ScraperTask:  AsyncTask<String, Int, ArrayList<AppInfo>>() {
             if (apps.size > 0) {
                 for (i in apps.indices) {
                     var appTitle = apps[i].getElementsByClass("fontBlack").text()
-                    var appImgLink = apps[i].getElementsByTag("img").attr("src")
+                    var appImgLink = "https://www.apkmirror.com" + apps[i].getElementsByTag("img").attr("src").dropLast(16)
                     var appDev = apps[i].getElementsByClass("byDeveloper")[0].text()
                     var appDate = apps[i].getElementsByClass("dateyear_utc")[0].text()
-                    var appUrl = apps[i].getElementsByClass("downloadLink").attr("href")
+                    var appUrl = "https://www.apkmirror.com" + apps[i].getElementsByClass("downloadLink").attr("href")
                     var appSize = appsInfo[i].getElementsByClass("infoslide-value")[2].text()
                     var appNumDownloads = appsInfo[i].getElementsByClass("infoslide-value")[3].text()
                     results.add(AppInfo(appTitle, appDev, appDate, "", appSize, appNumDownloads, appUrl))
@@ -46,7 +46,7 @@ class ScraperTask:  AsyncTask<String, Int, ArrayList<AppInfo>>() {
 
     override fun onPostExecute(result: ArrayList<AppInfo>) {
 
-        Log.d("Scraper: ", "done")
+        Log.d("SearchScraper: ", "done")
         delegate.processFinish(result)
 
     }
