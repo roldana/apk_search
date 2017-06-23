@@ -24,17 +24,17 @@ class ScraperTask:  AsyncTask<String, Int, ArrayList<AppInfo>>() {
 
             if (apps.size > 0) {
                 for (i in apps.indices) {
-                    var appTitle = apps[i].getElementsByTag("h5").attr("title")
+                    var appTitle = apps[i].getElementsByClass("fontBlack").text()
                     var appImgLink = apps[i].getElementsByTag("img").attr("src")
                     var appDev = apps[i].getElementsByClass("byDeveloper")[0].text()
                     var appDate = apps[i].getElementsByClass("dateyear_utc")[0].text()
                     var appUrl = apps[i].getElementsByClass("downloadLink").attr("href")
                     var appSize = appsInfo[i].getElementsByClass("infoslide-value")[2].text()
                     var appNumDownloads = appsInfo[i].getElementsByClass("infoslide-value")[3].text()
-                    results.add(AppInfo(appTitle, appDev, appDate, "", appSize, appNumDownloads.toInt(), appUrl))
+                    results.add(AppInfo(appTitle, appDev, appDate, "", appSize, appNumDownloads, appUrl))
                 }
             } else {
-                results.add(AppInfo("NO APPS FOUND","", "", "", "", 69, ""))
+                results.add(AppInfo("NO APPS FOUND","", "", "", "", "", ""))
             }
 
 

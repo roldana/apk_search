@@ -45,7 +45,7 @@ class SearchResultsAdapter(val searchResults: ArrayList<AppInfo>): RecyclerView.
         holder.appDevText.text = app.dev
         holder.appUploadedDateText.text = app.dateUploaded
         holder.appSizeText.text = app.fileSize
-        holder.appDownloadNumberText.text = app.downloads.toString()
+        holder.appDownloadNumberText.text = app.downloads + " downloads"
 
     }
 
