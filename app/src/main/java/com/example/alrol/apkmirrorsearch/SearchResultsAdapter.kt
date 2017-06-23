@@ -14,20 +14,21 @@ import android.widget.TextView
 /**
  * Created by alrol on 2017-06-21.
  */
-class SearchResultsAdapter(searchResults: ArrayList<AppInfo>): RecyclerView.Adapter<SearchResultsAdapter.SearchResultsViewHolder>() {
+class SearchResultsAdapter(val searchResults: ArrayList<AppInfo>): RecyclerView.Adapter<SearchResultsAdapter.SearchResultsViewHolder>() {
 
-    lateinit var searchResults: ArrayList<AppInfo>
-
-    fun SearchResultsAdapter(searchResults: ArrayList<AppInfo>) {
-        this.searchResults = searchResults
-
-    }
+//    lateinit var searchResults: ArrayList<AppInfo>
+////
+//    fun SearchResultsAdapter(searchResults: ArrayList<AppInfo>) {
+//        this.searchResults = searchresult
+//    }
 
     class SearchResultsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         var appNameText = view.findViewById(R.id.appName) as TextView
         var appDevText = view.findViewById(R.id.appDev) as TextView
-//        var appUploadedDateText = view.findViewById(R.id.appUploadedDate) as TextView
+        var appUploadedDateText = view.findViewById(R.id.appUploadedDate) as TextView
+        var appDownloadNumberText = view.findViewById(R.id.appDownloadNumber) as TextView
+        var appSizeText = view.findViewById(R.id.appSize) as TextView
 
     }
 
@@ -38,22 +39,18 @@ class SearchResultsAdapter(searchResults: ArrayList<AppInfo>): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: SearchResultsViewHolder, position: Int) {
-//        var data = ArrayList<AppInfo>()
-//
-//        var app1 = AppInfo("TITLE 1","DEV1","","","",69,"")
-//        var app2 = AppInfo("TITLE 2","DEV2","","","",96,"")
-//
-//        data.add(app1)
-//        data.add(app2)
 
-        var app = searchResultArray[position]
+        var app = searchResults[position]
         holder.appNameText.text = app.title
         holder.appDevText.text = app.dev
-//        holder.appUploadedDateText.text = app.dateUploaded
+        holder.appUploadedDateText.text = app.dateUploaded
+        holder.appSizeText.text = app.fileSize
+        holder.appDownloadNumberText.text = app.downloads.toString()
+
     }
 
     override fun getItemCount(): Int {
-        return searchResultArray.size
+        return searchResults.size
     }
 
 

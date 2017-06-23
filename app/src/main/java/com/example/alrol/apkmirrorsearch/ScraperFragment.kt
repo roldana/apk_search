@@ -1,6 +1,7 @@
 package com.example.alrol.apkmirrorsearch
 
 import android.app.Activity
+import android.content.Context
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
@@ -10,12 +11,16 @@ import android.util.Log
 import android.widget.TextView
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import android.os.AsyncTask.execute
+import android.support.v7.widget.DividerItemDecoration
 
-class ScraperFragment : Activity() {
+
+class ScraperFragment : Activity(), AsyncResponse {
 
     lateinit var searchResultsRV: RecyclerView
     lateinit var searchResultsRVAdapter: SearchResultsAdapter
     lateinit var searchResultsRVLayoutManager: RecyclerView.LayoutManager
+    var scraper = ScraperTask()
 
 
 
@@ -25,20 +30,24 @@ class ScraperFragment : Activity() {
         searchResultsRV = findViewById(R.id.searchResultsRecyclerView) as RecyclerView
         title = "$searchFor: $searchInput"
 
+        scraper.delegate = this
+        scraper.execute(searchString)
+
+    }
+
+    override fun processFinish(result: ArrayList<AppInfo>){
+
+        searchResultArray = result
+
         searchResultsRVLayoutManager = LinearLayoutManager(this)
         searchResultsRV.layoutManager = searchResultsRVLayoutManager
 
-        searchResultsRVAdapter = SearchResultsAdapter(searchResultArray)
+        searchResultsRVAdapter = SearchResultsAdapter(result)
         searchResultsRV.adapter = searchResultsRVAdapter
 
-
-
+        searchResultsRV.addItemDecoration(DividerItemDecoration(this,LinearLayoutManager.VERTICAL))
     }
-
-    fun refresh(){
-        searchResultsRV.adapter.notifyDataSetChanged()
-    }
-
-
 
 }
+
+

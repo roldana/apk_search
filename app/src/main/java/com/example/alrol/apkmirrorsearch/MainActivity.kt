@@ -56,16 +56,9 @@ class MainActivity : Activity() {
         searchString = searchUrl+searchInput
 
         if (searchInput != "") {
-//            val webViewActivityIntent = Intent(this, WebViewActivity::class.java)
-//            startActivity(webViewActivityIntent)
 
-//            val scraperFragmentIntent = Intent(this, ScraperFragment::class.java)
-//            startActivity(scraperFragmentIntent)
-            ScraperTask().execute(searchString)
             val scraperFragmentIntent = Intent(this, ScraperFragment::class.java)
             startActivity(scraperFragmentIntent)
-            searchField.setBackgroundColor(Color.CYAN)
-
         } else {
             searchField.setBackgroundColor(Color.RED)
         }
@@ -73,10 +66,6 @@ class MainActivity : Activity() {
 
     }
 
-//    fun scraperDone() {
-//        val scraperFragmentIntent = Intent(this, ScraperFragment::class.java)
-//        startActivity(scraperFragmentIntent)
-//    }
 
 
 
