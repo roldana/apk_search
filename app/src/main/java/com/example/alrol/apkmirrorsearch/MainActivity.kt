@@ -70,10 +70,10 @@ class MainActivity : Activity(), AsyncResponse {
 
         if (searchInput != "") {
 
-            val scraperFragmentIntent = Intent(this, ScraperFragment::class.java)
-            startActivity(scraperFragmentIntent)
+            val searchAPKFragmentIntent = Intent(this, SearchAPKFragment::class.java)
+            startActivity(searchAPKFragmentIntent)
         } else {
-            searchField.setBackgroundColor(Color.RED)
+            Toast.makeText(this,"Please enter a search query",Toast.LENGTH_SHORT)
         }
 
 
@@ -90,6 +90,10 @@ class MainActivity : Activity(), AsyncResponse {
         homeRecyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
         homeProgressBar.visibility = View.GONE
+    }
+
+    override fun linkReady(link: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

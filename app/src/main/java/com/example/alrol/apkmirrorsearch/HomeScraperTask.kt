@@ -25,13 +25,13 @@ class HomeScraperTask:  AsyncTask<String, Int, ArrayList<AppInfo>>() {
             if (apps.size > 0) {
                 for (i in apps.indices) {
                     var appTitle = apps[i].getElementsByClass("fontBlack").text()
-                    var appImgLink =  "https://www.apkmirror.com" + apps[i].getElementsByTag("img").attr("src").dropLast(16)
+                    var appImgUrl =  "https://www.apkmirror.com" + apps[i].getElementsByTag("img").attr("src").dropLast(16)
                     var appUrl = "https://www.apkmirror.com" + apps[i].getElementsByClass("fontBlack").attr("href")
                     var appNumDownloads = apps[i].getElementsByClass("colorLightBlack").text()
-                    results.add(AppInfo(appTitle,"","","","",appNumDownloads,appUrl))
+                    results.add(AppInfo(appTitle,"","","","",appNumDownloads,appUrl, appImgUrl))
                 }
             } else {
-                results.add(AppInfo("NO APPS FOUND","", "", "", "", "", ""))
+                results.add(AppInfo("NO APPS FOUND","", "", "", "", "", "",""))
             }
 
 

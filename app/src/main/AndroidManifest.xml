@@ -27,7 +27,7 @@
             android:label="Search results"
             android:parentActivityName=".MainActivity"></activity>
         <activity
-            android:name=".ScraperFragment"
+            android:name=".SearchAPKFragment"
             android:label="Scraper"
             android:parentActivityName=".MainActivity"></activity>
     </application>

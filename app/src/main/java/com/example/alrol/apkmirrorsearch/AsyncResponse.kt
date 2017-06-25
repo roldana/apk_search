@@ -5,4 +5,5 @@ package com.example.alrol.apkmirrorsearch
  */
 interface AsyncResponse {
     fun processFinish(output: ArrayList<AppInfo>)
+    fun linkReady(link: String)
 }

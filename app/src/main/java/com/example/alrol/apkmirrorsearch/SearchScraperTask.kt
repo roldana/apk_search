@@ -9,7 +9,7 @@ import org.jsoup.Jsoup
  */
 class SearchScraperTask:  AsyncTask<String, Int, ArrayList<AppInfo>>() {
 
-    lateinit var delegate: ScraperFragment
+    lateinit var delegate: SearchAPKFragment
 
     override fun doInBackground(vararg params: String?): ArrayList<AppInfo> {
 
@@ -25,16 +25,16 @@ class SearchScraperTask:  AsyncTask<String, Int, ArrayList<AppInfo>>() {
             if (apps.size > 0) {
                 for (i in apps.indices) {
                     var appTitle = apps[i].getElementsByClass("fontBlack").text()
-                    var appImgLink = "https://www.apkmirror.com" + apps[i].getElementsByTag("img").attr("src").dropLast(16)
+                    var appImgUrl = "https://www.apkmirror.com" + apps[i].getElementsByTag("img").attr("src").dropLast(16)
                     var appDev = apps[i].getElementsByClass("byDeveloper")[0].text()
                     var appDate = apps[i].getElementsByClass("dateyear_utc")[0].text()
                     var appUrl = "https://www.apkmirror.com" + apps[i].getElementsByClass("downloadLink").attr("href")
                     var appSize = appsInfo[i].getElementsByClass("infoslide-value")[2].text()
                     var appNumDownloads = appsInfo[i].getElementsByClass("infoslide-value")[3].text()
-                    results.add(AppInfo(appTitle, appDev, appDate, "", appSize, appNumDownloads, appUrl))
+                    results.add(AppInfo(appTitle, appDev, appDate, "", appSize, appNumDownloads, appUrl, appImgUrl))
                 }
             } else {
-                results.add(AppInfo("NO APPS FOUND","", "", "", "", "", ""))
+                results.add(AppInfo("NO APPS FOUND","", "", "", "", "", "",""))
             }
 
 

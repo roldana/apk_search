@@ -1,11 +1,17 @@
 package com.example.alrol.apkmirrorsearch
 
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import java.util.ArrayList
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 
 
 /**
@@ -13,10 +19,21 @@ import android.widget.TextView
  */
 class HomeRecyclerViewAdapter(val results: ArrayList<AppInfo>): RecyclerView.Adapter<HomeRecyclerViewAdapter.HomeViewHolder>() {
 
-    class HomeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class HomeViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
         var appNameText = view.findViewById(R.id.appName) as TextView
         var appDownloadNumberText = view.findViewById(R.id.appDownloadNumber) as TextView
+        var appImage = view.findViewById(R.id.appImg) as ImageView
+
+
+        fun setOnClick(item: AppInfo){
+            appNameText.setOnClickListener{
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(item.url))
+                ContextCompat.startActivity(view.context, browserIntent, Bundle())
+
+            }
+        }
+
 
     }
 
@@ -29,6 +46,12 @@ class HomeRecyclerViewAdapter(val results: ArrayList<AppInfo>): RecyclerView.Ada
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
 
         var app = results[position]
+
+        holder.setOnClick(app)
+
+        Picasso.with(holder.appImage.context).load(app.imageUrl).into(holder.appImage)
+
+
         holder.appNameText.text = app.title
         holder.appDownloadNumberText.text = app.downloads
 

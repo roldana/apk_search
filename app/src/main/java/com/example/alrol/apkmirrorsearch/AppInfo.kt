@@ -1,8 +1,9 @@
 package com.example.alrol.apkmirrorsearch
 
+import android.graphics.Bitmap
 import android.media.Image
 
 /**
  * Created by alrol on 2017-06-20.
  */
-class AppInfo(var title: String, var dev: String, var dateUploaded: String,var version: String, var fileSize: String, var downloads: String, var url: String)
+class AppInfo(var title: String, var dev: String, var dateUploaded: String,var version: String, var fileSize: String, var downloads: String, var url: String, var imageUrl :String)

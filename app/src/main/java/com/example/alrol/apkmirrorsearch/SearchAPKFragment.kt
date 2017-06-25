@@ -1,24 +1,15 @@
 package com.example.alrol.apkmirrorsearch
 
 import android.app.Activity
-import android.content.Context
-import android.opengl.Visibility
-import android.os.AsyncTask
-import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
-import android.widget.TextView
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
-import android.os.AsyncTask.execute
 import android.support.v7.widget.DividerItemDecoration
 import android.view.View
 import android.widget.ProgressBar
 
 
-class ScraperFragment : Activity(), AsyncResponse {
+class SearchAPKFragment : Activity(), AsyncResponse {
 
     lateinit var searchResultsRV: RecyclerView
     lateinit var searchResultsRVAdapter: SearchResultsAdapter
@@ -30,17 +21,14 @@ class ScraperFragment : Activity(), AsyncResponse {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.scraper_fragment)
+        setContentView(R.layout.search_results_apk_fragment)
         title = "$searchFor: $searchInput"
-
 
         searchResultsRV = findViewById(R.id.searchResultsRecyclerView) as RecyclerView
         progressBar = findViewById(R.id.scraperProgress) as ProgressBar
 
         scraper.delegate = this
         scraper.execute(searchString)
-
-
     }
 
     override fun processFinish(result: ArrayList<AppInfo>){
@@ -58,8 +46,7 @@ class ScraperFragment : Activity(), AsyncResponse {
         progressBar.visibility = View.GONE
     }
 
-    fun setProgressPercent(vararg progress: Int?){
-        progressBar.progress = progress[0] as Int
+    override fun linkReady(link: String) {
     }
 
 }

@@ -62,21 +62,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="XX.XX MB"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@+id/appDownloadNumber"
-        app:layout_constraintRight_toRightOf="@+id/appDownloadNumber"
-        android:layout_marginRight="0dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/appUploadedDate"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintTop_toTopOf="@+id/appUploadedDate"
+        android:layout_marginTop="0dp"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/appDownloadNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="xxx downloads"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="13dp"
-        app:layout_constraintVertical_bias="0.51" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintTop_toTopOf="@+id/appDev"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/appDev"
+        app:layout_constraintVertical_bias="0.5" />
 </android.support.constraint.ConstraintLayout>
