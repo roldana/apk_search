@@ -41,7 +41,7 @@ class SearchAPKFragment : Activity(), AsyncResponse {
         searchResultsRVAdapter = SearchResultsAdapter(result)
         searchResultsRV.adapter = searchResultsRVAdapter
 
-        searchResultsRV.addItemDecoration(DividerItemDecoration(this,LinearLayoutManager.VERTICAL))
+//        searchResultsRV.addItemDecoration(DividerItemDecoration(this,LinearLayoutManager.VERTICAL))
 
         progressBar.visibility = View.GONE
     }

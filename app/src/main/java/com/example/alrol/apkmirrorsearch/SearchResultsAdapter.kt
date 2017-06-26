@@ -8,10 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.*
 import java.util.ArrayList
-import android.widget.TextView
-import android.widget.Toast
 import com.squareup.picasso.Picasso
 
 
@@ -30,6 +28,7 @@ class SearchResultsAdapter(val searchResults: ArrayList<AppInfo>): RecyclerView.
         var appDownloadNumberText = view.findViewById(R.id.appDownloadNumber) as TextView
         var appSizeText = view.findViewById(R.id.appSize) as TextView
         var appImage = view.findViewById(R.id.appImg) as ImageView
+//        var downloadButton = view.findViewById(R.id.downloadButton) as ImageButton
 
         val dlScraper = DownloadLinkScraperTask()
 
@@ -40,9 +39,9 @@ class SearchResultsAdapter(val searchResults: ArrayList<AppInfo>): RecyclerView.
             }
 
             appImage.setOnClickListener {
-
                 dlScraper.delegate = this
                 dlScraper.execute(item.url)
+                Toast.makeText(view.context,"Fetching download link", Toast.LENGTH_LONG)
             }
         }
 
@@ -53,7 +52,7 @@ class SearchResultsAdapter(val searchResults: ArrayList<AppInfo>): RecyclerView.
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultsAdapter.SearchResultsViewHolder {
-        val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.search_results_row, parent, false)
+        val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.search_results_row_card, parent, false)
 
         return SearchResultsViewHolder(inflatedView)
     }
