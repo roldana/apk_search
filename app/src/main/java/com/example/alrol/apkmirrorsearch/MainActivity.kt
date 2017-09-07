@@ -2,7 +2,6 @@ package com.example.alrol.apkmirrorsearch
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -17,7 +16,7 @@ var searchResultArray = ArrayList<AppInfo>()
 
 class MainActivity : Activity(), AsyncResponse {
     lateinit var searchUrl : String
-    lateinit var searchField: SearchView
+    lateinit var searchField: EditText
     lateinit var searchButton: Button
     lateinit var radioApk : RadioButton
     lateinit var radioApp : RadioButton
@@ -34,7 +33,7 @@ class MainActivity : Activity(), AsyncResponse {
         setContentView(R.layout.activity_main)
 
         searchButton = findViewById(R.id.search_button) as Button
-        searchField = findViewById(R.id.search) as SearchView
+        searchField = findViewById(R.id.search_input) as EditText
         radioApk = findViewById(R.id.apk_radio_button) as RadioButton
         radioApp = findViewById(R.id.app_radio_button) as RadioButton
         radioDev = findViewById(R.id.dev_radio_button) as RadioButton
@@ -65,7 +64,7 @@ class MainActivity : Activity(), AsyncResponse {
             searchFor = "dev"
         }
 
-        searchInput = searchField.query.toString()
+        searchInput = searchField.text.toString()
         searchString = searchUrl+searchInput
 
         if (searchInput != "") {
