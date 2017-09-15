@@ -28,7 +28,7 @@ class WebViewActivity : Activity() {
 
         title = "$searchFor: $searchInput"
 
-        webview = findViewById(R.id.searchWebView) as WebView
+        webview = findViewById(R.id.searchWebView)
         webview.settings.javaScriptEnabled = true
         webview.loadUrl(searchString)
 

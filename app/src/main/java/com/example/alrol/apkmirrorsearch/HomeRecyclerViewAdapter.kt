@@ -21,9 +21,9 @@ class HomeRecyclerViewAdapter(val results: ArrayList<AppInfo>): RecyclerView.Ada
 
     class HomeViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        var appNameText = view.findViewById(R.id.appName) as TextView
-        var appDownloadNumberText = view.findViewById(R.id.appDownloadNumber) as TextView
-        var appImage = view.findViewById(R.id.appImg) as ImageView
+        var appNameText: TextView = view.findViewById(R.id.appName)
+        var appDownloadNumberText: TextView = view.findViewById(R.id.appDownloadNumber)
+        var appImage: ImageView = view.findViewById(R.id.appImg)
 
 
         fun setOnClick(item: AppInfo){

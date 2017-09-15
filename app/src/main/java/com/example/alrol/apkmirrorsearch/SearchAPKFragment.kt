@@ -24,8 +24,8 @@ class SearchAPKFragment : Activity(), AsyncResponse {
         setContentView(R.layout.search_results_apk_fragment)
         title = "$searchFor: $searchInput"
 
-        searchResultsRV = findViewById(R.id.searchResultsRecyclerView) as RecyclerView
-        progressBar = findViewById(R.id.scraperProgress) as ProgressBar
+        searchResultsRV = findViewById(R.id.searchResultsRecyclerView)
+        progressBar = findViewById(R.id.scraperProgress)
 
         scraper.delegate = this
         scraper.execute(searchString)

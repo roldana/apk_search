@@ -24,12 +24,12 @@ class SearchResultsAdapter(val searchResults: ArrayList<AppInfo>): RecyclerView.
 
     class SearchResultsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        var appNameText = view.findViewById(R.id.appName) as TextView
-        var appDevText = view.findViewById(R.id.appDev) as TextView
-        var appUploadedDateText = view.findViewById(R.id.appUploadedDate) as TextView
-        var appDownloadNumberText = view.findViewById(R.id.appDownloadNumber) as TextView
-        var appSizeText = view.findViewById(R.id.appSize) as TextView
-        var appImage = view.findViewById(R.id.appImg) as ImageView
+        var appNameText: TextView = view.findViewById(R.id.appName)
+        var appDevText: TextView = view.findViewById(R.id.appDev)
+        var appUploadedDateText: TextView = view.findViewById(R.id.appUploadedDate)
+        var appDownloadNumberText: TextView = view.findViewById(R.id.appDownloadNumber)
+        var appSizeText: TextView = view.findViewById(R.id.appSize)
+        var appImage: ImageView = view.findViewById(R.id.appImg)
 
         val dlScraper = DownloadLinkScraperTask()
 

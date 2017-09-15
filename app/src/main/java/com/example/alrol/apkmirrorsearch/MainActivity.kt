@@ -33,13 +33,13 @@ class MainActivity : Activity(), AsyncResponse {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        searchButton = findViewById(R.id.search_button) as Button
-        searchField = findViewById(R.id.search) as SearchView
-        radioApk = findViewById(R.id.apk_radio_button) as RadioButton
-        radioApp = findViewById(R.id.app_radio_button) as RadioButton
-        radioDev = findViewById(R.id.dev_radio_button) as RadioButton
-        homeProgressBar = findViewById(R.id.homeRecyclerViewProgress) as ProgressBar
-        homeRecyclerView = findViewById(R.id.homeRecyclerView) as RecyclerView
+        searchButton = findViewById(R.id.search_button)
+        searchField = findViewById(R.id.search)
+        radioApk = findViewById(R.id.apk_radio_button)
+        radioApp = findViewById(R.id.app_radio_button)
+        radioDev = findViewById(R.id.dev_radio_button)
+        homeProgressBar = findViewById(R.id.homeRecyclerViewProgress)
+        homeRecyclerView = findViewById(R.id.homeRecyclerView)
 
         scraper.delegate = this
         scraper.execute()
